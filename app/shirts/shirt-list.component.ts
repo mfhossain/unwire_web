@@ -12,12 +12,16 @@ export class ShirtListComponent {
     pageTitle: string = "Shirt List";
     imageWidth:number=50;
     imageMargin:number=2;    
+    listFilter: string = '';
     shirts: IShirt[]; 
-
+    errorMessage: string;
+    
     constructor(private _shirtService: ShirtService){        
     }
 
     ngOnInit(): void{
-        this.shirts = this._shirtService.getShirtList();
+        this._shirtService.getShirtList()
+               .subscribe(shirts => this.shirts = shirts,
+                  error => this.errorMessage = <any>error);
     }   
 }

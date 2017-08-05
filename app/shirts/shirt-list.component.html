@@ -1,8 +1,24 @@
 <div class='panel panel-primary'>
     <div class='panel-heading'>
         {{pageTitle}}
+        Filtered by
+        
+        <div class="pull-right">
+							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+								<i class="glyphicon glyphicon-filter"></i>
+							</span>
+						</div>
     </div>
     <div class='panel-body'>       
+        <div class="panel-filter">
+            <input type="text" [(ngModel)]='listFilter' class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" 
+              placeholder="Filter Color" />
+		</div>
+        <div class='row'>
+            <div class='col-md-6'>
+                <h3> </h3>
+            </div>
+        </div>
         <div class='table-responsive'>
             <table class='table' *ngIf='shirts && shirts.length'>
                 <thead>
@@ -10,17 +26,25 @@
                     <th>Price</th>
                     <th>Picture</th>
                     <th>Size</th>
+                    <th>Colour</th>
                     <th>Name</th>
-                    <th>Quantity</th>                                            
+                    <th>Quantity</th>
                 </thead>
                 <tbody>
-                   <tr *ngFor='let shirt of shirts'>                       
+                   <tr *ngFor='let shirt of shirts | shirtFilter:listFilter'>
                         <td>{{shirt.id }}</td>
                         <td>{{shirt.price}}</td>
-                        <td>{{shirt.picture}}</td>
+                        <td>
+                            <img
+                                [src]='shirt.picture'
+                                [title]='shirt.name'
+                                [style.width.px]='imageWidth'
+                                [style.margin.px]='imageMargin'>
+                        </td>
                         <td>{{shirt.size}}</td>
+                        <td>{{shirt.colour}}</td>
                         <td>{{shirt.name}}</td>
-                        <td>{{shirt.quantity}}</td>                        
+                        <td>{{shirt.quantity}}</td>
                     </tr>
                 </tbody>
             </table>

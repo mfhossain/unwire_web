@@ -17,9 +17,12 @@ var ShirtListComponent = (function () {
         this.pageTitle = "Shirt List";
         this.imageWidth = 50;
         this.imageMargin = 2;
+        this.listFilter = '';
     }
     ShirtListComponent.prototype.ngOnInit = function () {
-        this.shirts = this._shirtService.getShirtList();
+        var _this = this;
+        this._shirtService.getShirtList()
+            .subscribe(function (shirts) { return _this.shirts = shirts; }, function (error) { return _this.errorMessage = error; });
     };
     return ShirtListComponent;
 }());
