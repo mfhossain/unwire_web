@@ -1,57 +1,37 @@
 <div class='panel panel-primary'>
     <div class='panel-heading'>
-        {{pageTitle}}
-        Filtered by
+        {{pageTitle}}       
         
         <div class="pull-right">
 							<span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
 								<i class="glyphicon glyphicon-filter"></i>
 							</span>
 						</div>
-    </div>
-    <div class='panel-body'>       
-        <div class="panel-filter">
+	</div>
+					<div class="panel-filter">
             <input type="text" [(ngModel)]='listFilter' class="form-control" id="dev-table-filter" data-action="filter" data-filters="#dev-table" 
               placeholder="Filter Color" />
 		</div>
-        <div class='row'>
-            <div class='col-md-6'>
-                <h3> </h3>
-            </div>
-        </div>
-        <div class='table-responsive'>
-            <table class='table' *ngIf='shirts && shirts.length'>
-                <thead>
-                    <th>Id</th>
-                    <th>Price</th>
-                    <th>Picture</th>
-                    <th>Size</th>
-                    <th>Colour</th>
-                    <th>Name</th>
-                    <th>Quantity</th>
-                </thead>
-                <tbody>
-                   <tr *ngFor='let shirt of shirts | shirtFilter:listFilter'>
-                        <td>{{shirt.id }}</td>
-                        <td>{{shirt.price}}</td>
-                        <td>
-                            <img
-                                [src]='shirt.picture'
-                                [title]='shirt.name'
-                                [style.width.px]='imageWidth'
-                                [style.margin.px]='imageMargin'>
-                        </td>
-                        <td>{{shirt.size}}</td>
-                        <td>{{shirt.colour}}</td>
-                        <td><a [routerLink]="['/shirt', shirt.id]">
-                            {{shirt.name}}
-                        </a></td>
-                       
-                        <td>{{shirt.quantity}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <div class='panel-body'>        
+        <div class='row'>                    
+			<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" *ngFor='let shirt of shirts | shirtFilter:listFilter'>
+				<div class="my-list">
+					<img [src]='shirt.picture'
+						[title]='shirt.name'>
+					<h3>{{shirt.name}}</h3>
+					<span>DKK:{{shirt.price}}</span>
+					<span class="pull-right">Size:{{shirt.size}} ({{shirt.colour}})</span>
+					<div class="offer">Last remains: {{shirt.quantity}}</div>
+					<div class="detail">
+						<p>{{shirt.name}}</p>
+						<img [src]='shirt.picture'
+						[title]='shirt.name'>
+						<a href="#" class="btn btn-info">Add To Cart</a>
+						<a [routerLink]="['/shirt', shirt.id]" class="btn btn-info">Deatil</a>
+					</div>
+				</div>
+			</div>
+		</div>
     </div>
 </div>
 <router-outlet></router-outlet>
