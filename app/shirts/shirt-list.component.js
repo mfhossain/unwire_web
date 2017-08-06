@@ -14,7 +14,7 @@ var shirt_service_1 = require("./shirt.service");
 var ShirtListComponent = (function () {
     function ShirtListComponent(_shirtService) {
         this._shirtService = _shirtService;
-        this.pageTitle = "Shirt List";
+        this.pageTitle = 'Shirt List';
         this.imageWidth = 50;
         this.imageMargin = 2;
         this.listFilter = '';
@@ -28,7 +28,6 @@ var ShirtListComponent = (function () {
 }());
 ShirtListComponent = __decorate([
     core_1.Component({
-        selector: 'unwire-shirtstore-shirtlist',
         templateUrl: 'app/shirts/shirt-list.component.html',
         styleUrls: ['app/shirts/shirt-list.component.css']
     }),

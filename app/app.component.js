@@ -10,14 +10,14 @@ var core_1 = require("@angular/core");
 var shirt_service_1 = require("./shirts/shirt.service");
 var AppComponent = (function () {
     function AppComponent() {
-        this.pageTitle = 'Welcome to Unwire Shart Store';
+        this.pageTitle = "Acme Product Management";
     }
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'unwire-shirtstore',
-        template: '<div><h1>{{pageTitle}}</h1><unwire-shirtstore-shirtlist></unwire-shirtstore-shirtlist></div>',
+        template: "\n    <div>\n        <div class='container'>\n            <router-outlet></router-outlet>\n        </div>\n     </div>\n     ",
         providers: [shirt_service_1.ShirtService]
     })
 ], AppComponent);
