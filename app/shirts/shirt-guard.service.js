@@ -17,7 +17,7 @@ var ShirtDetailGuard = (function () {
     }
     ShirtDetailGuard.prototype.canActivate = function (route) {
         var id = +route.url[1].path;
-        if (isNaN(id) || id < 1) {
+        if (isNaN(id) || id < 0) {
             alert('Invalid shirt Id');
             this._router.navigate(['/shirts']);
             return false;
