@@ -22,6 +22,17 @@ export class ShirtService{
                  .catch(this.handleError);
     }
 
+
+    getShirt(id: number): Observable<IShirt[]> {
+     return this._http.get(this._shirtUrl)
+        .map(res => (<IShirt[]>res.json()).filter(shirt => shirt.id === id))
+        .do(data => console.log(data)) 
+        .catch(this.handleError);
+    }
+
+    
+
+
     private handleError(error: Response) {
       console.error(error);
       return Observable.throw(error.json().error || 'Server Error');

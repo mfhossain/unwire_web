@@ -7,6 +7,19 @@
         <a class='btn btn-default' (click)='onBack()' style='width:80px'>
             <i class='glyphicon glyphicon-chevron-left'></i> Back
         </a>
+        
+	    <div class="panel" *ngFor='let shirt of shirts'>
+				<div class="my-list">
+					<img [src]='shirt.picture'
+						[title]='shirt.name'>
+					<h3>{{shirt.name}}</h3>
+					<span>DKK:{{shirt.price}}</span>
+					<span class="pull-right">Size:{{shirt.size}} ({{shirt.colour}})</span>
+					<div class="offer">Last remains: {{shirt.quantity}}</div>
+				    <a href="#" class="btn btn-info">Add To Cart</a>
+				</div>
+		</div>
+
     </div>
 
 </div>

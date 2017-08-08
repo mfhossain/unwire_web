@@ -26,6 +26,12 @@ var ShirtService = (function () {
             .do(function (data) { return console.log('Log:' + JSON.stringify(data)); })
             .catch(this.handleError);
     };
+    ShirtService.prototype.getShirt = function (id) {
+        return this._http.get(this._shirtUrl)
+            .map(function (res) { return res.json().filter(function (shirt) { return shirt.id === id; }); })
+            .do(function (data) { return console.log(data); })
+            .catch(this.handleError);
+    };
     ShirtService.prototype.handleError = function (error) {
         console.error(error);
         return Observable_1.Observable.throw(error.json().error || 'Server Error');
